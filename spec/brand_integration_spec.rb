@@ -26,3 +26,16 @@ describe("the delete a brand path", {:type => :feature}) do
     expect(page).to have_content("All Brands")
   end
 end
+
+describe("the edit a brands's name path", {:type => :feature}) do
+  it("udpates a brands's name in the database") do
+    test_brand = Brand.create({:name => "Test Brand Name"})
+    visit('/')
+    click_link("Test Brand Name")
+    click_link("Edit Brand Name")
+    expect(page).to have_content("Update")
+    fill_in("brand_name", :with => "New Brand Name")
+    click_button("Update")
+    expect(page).to have_content("New Brand Name")
+  end
+end

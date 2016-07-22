@@ -1,0 +1,11 @@
+<h1>Update <%= @brand.name %>'s Info</h1>
+<form action="/brands/<%= @brand.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="brand_name">Edit this brand's name:</label>
+    <input class="form-control" type="text" name="brand_name">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" name="button">Update</button>
+  </div>
+</form>

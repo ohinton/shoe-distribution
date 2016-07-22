@@ -34,7 +34,6 @@ delete('/stores/:id') do
   erb(:index)
 end
 
-
 get '/stores/:id/edit' do
   @store = Store.find(params.fetch('id').to_i())
   erb(:store_edit)
@@ -46,8 +45,6 @@ patch '/stores/:id/edit' do
   store.update({:name => store_name})
   redirect back
 end
-
-
 
 
 post '/brands/new' do
@@ -72,4 +69,16 @@ delete('/brands/:id') do
   @brands = Brand.all
   @stores = Store.all()
   erb(:index)
+end
+
+get '/brands/:id/edit' do
+  @brand = Brand.find(params.fetch('id').to_i())
+  erb(:brand_edit)
+end
+
+patch '/brands/:id/edit' do
+  brand = Brand.find(params.fetch('id').to_i())
+  brand_name = params[:brand_name]
+  brand.update({:name => brand_name})
+  redirect back
 end
