@@ -2,7 +2,7 @@ require("spec_helper")
 
 describe("the index path", {:type => :feature}) do
   it("lists all stores in the database") do
-    test_store = Store.create({:name => "Test Store"})
+    test_store = Store.create({:name => "Test store"})
     visit('/')
     expect(page).to have_content("Test Store")
   end
@@ -11,7 +11,7 @@ end
 describe("the add a store path", {:type => :feature}) do
   it("adds a store to the database") do
     visit('/')
-    fill_in("store_name", :with => "Test Store")
+    fill_in("store_name", :with => "Test store")
     click_button("Add Store")
     expect(page).to have_content("Test Store")
   end

@@ -11,7 +11,7 @@ end
 describe("the add a brand path", {:type => :feature}) do
   it("has a form to add a brand") do
     visit('/')
-    fill_in("brand_name", :with => "Test Brand")
+    fill_in("brand_name", :with => "Test brand")
     click_button("Add Brand")
     expect(page).to have_content("Test Brand")
   end
