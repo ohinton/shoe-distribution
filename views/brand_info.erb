@@ -1,17 +1,17 @@
 <h1><%= @brand.name %></h1>
 
-<p><a role="button" href="/brands/<%= @brand.id %>/edit">Edit Brand Name</a></p>
+<p><a class="btn btn-primary" role="button" href="/brands/<%= @brand.id %>/edit">Edit Brand Name</a></p>
 
 <form action="/brands/<%= @brand.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <button class="btn btn-danger" type="submit">Delete Brand</button>
 </form>
 
-<h2>Stores that sell <%= @brand.name %></h2>
-<ul>
-  <% if @brand.stores %>
-  <% @brand.stores.each do | store | %>
-  <li><a href="/stores/<%= store.id %>"><%= store.name %></a></li>
-  <% end %>
-  <% end %>
-</ul>
+<% if @brand.stores.any? %>
+  <h2>Stores that sell <%= @brand.name %></h2>
+  <ul>
+    <% @brand.stores.each do | store | %>
+    <li><a href="/stores/<%= store.id %>"><%= store.name %></a></li>
+    <% end %>
+  </ul>
+<% end %>
