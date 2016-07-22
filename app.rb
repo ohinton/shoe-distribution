@@ -18,3 +18,10 @@ post '/stores/new' do
     redirect '/'
   end
 end
+
+get '/stores/:id' do
+  @store = Store.find(params.fetch('id').to_i())
+  @stores = Store.all
+  @brands = Brand.all
+  erb(:store_info)
+end

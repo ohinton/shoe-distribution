@@ -1,0 +1,17 @@
+<h1><%= @store.name %></h1>
+
+<p><a role="button" href="/stores/<%= @store.id %>/edit">Edit Store Name</a></p>
+
+<form action="/stores/<%= @store.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn btn-danger" type="submit">Delete Store</button>
+</form>
+
+<h2>Brands available at <%= @store.name %></h2>
+<ul>
+  <% if @store.brands %>
+  <% @store.brands.each do | brand | %>
+  <li><a href="/brands/<%= brand.id %>"><%= brand.name %></a></li>
+  <% end %>
+  <% end %>
+</ul>
