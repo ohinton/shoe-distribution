@@ -43,7 +43,14 @@ patch '/stores/:id/edit' do
   store = Store.find(params.fetch('id').to_i())
   store_name = params[:store_name]
   store.update({:name => store_name})
-  redirect back
+  redirect to "/stores/#{store.id}"
+end
+
+patch '/stores/:id/brands' do
+  store = Store.find(params.fetch('id').to_i())
+  new_brand = Brand.find(params[:brand])
+  store.brands.push(new_brand)
+  redirect to "/stores/#{store.id}"
 end
 
 
@@ -80,5 +87,5 @@ patch '/brands/:id/edit' do
   brand = Brand.find(params.fetch('id').to_i())
   brand_name = params[:brand_name]
   brand.update({:name => brand_name})
-  redirect back
+  redirect redirect to "/brands/#{brand.id}"
 end

@@ -39,3 +39,15 @@ describe("the edit a store's name path", {:type => :feature}) do
     expect(page).to have_content("New Store Name")
   end
 end
+
+describe("the add a brand to a store path", {:type => :feature}) do
+  it("allows the user to add a brand to a store") do
+    test_store = Store.create({:name => "Test Store"})
+    test_brand = Brand.create({:name => "Test Brand"})
+    visit('/')
+    click_link("Test Store")
+    select("Test Brand", :from => "brand")
+    click_button("Add")
+    expect(page).to have_content("Test Brand")
+  end
+end

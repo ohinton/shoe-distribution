@@ -13,5 +13,21 @@
   <% @store.brands.each do | brand | %>
   <li><a href="/brands/<%= brand.id %>"><%= brand.name %></a></li>
   <% end %>
+  <p>There are no brands saved yet!</p>
   <% end %>
 </ul>
+
+<h3>Add a brand sold at <%= @store.name %></h3>
+<form action="/stores/<%= @store.id %>/brands" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <select class="form-control" name="brand">
+      <% if @brands %>
+      <% @brands.each do | brand | %>
+      <option value="<%= brand.id %>"> <%= brand.name %> </option>
+      <% end %>
+      <% end %>
+    </select>
+  </div>
+  <button class="btn btn-success" type="submit" name="button">Add</button>
+</form>
