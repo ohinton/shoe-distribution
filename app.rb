@@ -35,6 +35,21 @@ delete('/stores/:id') do
 end
 
 
+get '/stores/:id/edit' do
+  @store = Store.find(params.fetch('id').to_i())
+  erb(:store_edit)
+end
+
+patch '/stores/:id/edit' do
+  store = Store.find(params.fetch('id').to_i())
+  store_name = params[:store_name]
+  store.update({:name => store_name})
+  redirect back
+end
+
+
+
+
 post '/brands/new' do
   new_brand = Brand.new({:name => params[:brand_name]})
   if new_brand.save

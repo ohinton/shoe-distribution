@@ -26,3 +26,16 @@ describe("the delete a store path", {:type => :feature}) do
     expect(page).to have_content("All Stores")
   end
 end
+
+describe("the edit a store's name path", {:type => :feature}) do
+  it("udpates a store's name in the database") do
+    test_store = Store.create({:name => "Test Store Name"})
+    visit('/')
+    click_link("Test Store Name")
+    click_link("Edit Store Name")
+    expect(page).to have_content("Update")
+    fill_in("store_name", :with => "New Store Name")
+    click_button("Update")
+    expect(page).to have_content("New Store Name")
+  end
+end
