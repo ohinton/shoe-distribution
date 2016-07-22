@@ -26,6 +26,14 @@ get '/stores/:id' do
   erb(:store_info)
 end
 
+delete('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i())
+  @store.destroy()
+  @stores = Store.all
+  @brands = Brand.all()
+  erb(:index)
+end
+
 
 post '/brands/new' do
   new_brand = Brand.new({:name => params[:brand_name]})
@@ -41,4 +49,12 @@ get '/brands/:id' do
   @brands = Brand.all
   @stores = Store.all
   erb(:brand_info)
+end
+
+delete('/brands/:id') do
+  @brand = Brand.find(params.fetch('id').to_i())
+  @brand.destroy()
+  @brands = Brand.all
+  @stores = Store.all()
+  erb(:index)
 end

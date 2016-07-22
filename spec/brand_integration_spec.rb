@@ -16,3 +16,13 @@ describe("the add a brand path", {:type => :feature}) do
     expect(page).to have_content("Test Brand")
   end
 end
+
+describe("the delete a brand path", {:type => :feature}) do
+  it("deletes a brand from the database") do
+    test_brand = Brand.create({:name => "Test Brand"})
+    visit('/')
+    click_link("Test Brand")
+    click_button("Delete Brand")
+    expect(page).to have_content("All Brands")
+  end
+end
