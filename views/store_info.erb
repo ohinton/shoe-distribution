@@ -16,7 +16,7 @@
   </ul>
 <% end %>
 
-<h3>Add a brand sold at <%= @store.name %></h3>
+<h3>Add a brand</h3>
 <form action="/stores/<%= @store.id %>/brands" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class="form-group">
