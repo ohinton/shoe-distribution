@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1>Stores</h1>
+    <form action="/stores/new" method="post">
+      <div class="form-group">
+        <label for="store_name">Add a new store:</label>
+        <input class="form-control" type="text" name="store_name">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" type="submit" name="button">Add Store</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <h1>Brands</h1>
+    <form action="/brands/new" method="post">
+      <div class="form-group">
+        <label for="brand_name">Add a new brand:</label>
+        <input class="form-control" type="text" name="brand_name">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" type="submit" name="button">Add Brand</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h1>All Stores</h1>
+    <% if @stores %>
+      <ul>
+      <% @stores.each do | store |  %>
+        <li><a href="/stores/<%= store.id %>"><%= store.name %></a></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <h1>All Brands</h1>
+    <% if @brands %>
+      <ul>
+      <% @brands.each do | brand |  %>
+        <li><a href="/brands/<%= brand.id %>"><%= brand.name %></a></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
