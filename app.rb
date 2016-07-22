@@ -25,3 +25,20 @@ get '/stores/:id' do
   @brands = Brand.all
   erb(:store_info)
 end
+
+
+post '/brands/new' do
+  new_brand = Brand.new({:name => params[:brand_name]})
+  if new_brand.save
+    redirect to "/brands/#{new_brand.id}"
+  else
+    redirect '/'
+  end
+end
+
+get '/brands/:id' do
+  @brand = Brand.find(params.fetch('id').to_i())
+  @brands = Brand.all
+  @stores = Store.all
+  erb(:brand_info)
+end
