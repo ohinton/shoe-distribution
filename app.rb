@@ -89,3 +89,10 @@ patch '/brands/:id/edit' do
   brand.update({:name => brand_name})
   redirect redirect to "/brands/#{brand.id}"
 end
+
+patch '/brands/:id/stores' do
+  brand = Brand.find(params.fetch('id').to_i())
+  new_store = Store.find(params[:store])
+  brand.stores.push(new_store)
+  redirect to "/brands/#{brand.id}"
+end

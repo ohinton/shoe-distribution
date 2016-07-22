@@ -16,7 +16,7 @@ This website app was built to track shoe brands and the stores where each brand 
 ## Tech Used
 
 * Ruby
-* ActiveRecord
+* Active Record
 * Sinatra
 * Bootstrap
 * HTML

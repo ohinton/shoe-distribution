@@ -15,3 +15,18 @@
     <% end %>
   </ul>
 <% end %>
+
+<h3>Add a store</h3>
+<form action="/brands/<%= @brand.id %>/stores" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <select class="form-control" name="store">
+      <% if @stores %>
+      <% @stores.each do | store | %>
+      <option value="<%= store.id %>"> <%= store.name %> </option>
+      <% end %>
+      <% end %>
+    </select>
+  </div>
+  <button class="btn btn-success" type="submit" name="button">Add</button>
+</form>
